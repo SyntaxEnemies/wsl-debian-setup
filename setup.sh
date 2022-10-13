@@ -20,8 +20,10 @@ echo "(2/5) Updating existing packages ..." && apt upgrade &&\
 echo "(3/5) Installing new packages" && apt install "${pkgs[@]}"
 
 echo "(4/5) Installing extras ..."
+
 echo "Installing micro ..."
 curl "https://getmic.ro" | bash
+cp micro /usr/local/bin/micro
 
 echo "Installing tmate ..."
 cp tmate /usr/local/bin/
