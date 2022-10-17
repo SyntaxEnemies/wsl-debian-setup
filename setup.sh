@@ -30,12 +30,14 @@ cp tmate /usr/local/bin/
 
 echo 'Installing pyenv...'
 curl -L 'https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer' | bash
+command -v pyenv &>/dev/null && 'Success with pyenv' || die "Couldn't install pyenv"
 
+pyenv install --list
 printf 'Python version to install: '
 read py_version
 echo
 
-[[ -n "$py_version" ]] && command -v pyenv &>/dev/null && (pyenv install "$py_version" && pyenv local "$py_version") || die 'No Python version selected, aborting ...'
+[[ -n "$py_version" ]] && (pyenv install "$py_version" && pyenv local "$py_version") || die 'No Python version selected, aborting ...'
 
 echo 'Installing python-pip ...'
 curl 'https://bootstrap.pypa.io/get-pip' | python
