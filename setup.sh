@@ -29,13 +29,14 @@ echo 'Installing tmate ...'
 sudo cp tmate /usr/local/bin/
 
 echo 'Installing pyenv...'
+curl -L 'https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer' | bash
+
 if ! grep -q 'PYENV_ROOT' "$shellrc"; then
     echo "Adding pyenv information to shell bootstrap file: $shellrc"
     cat pyenv-fix.sh >> "$shellrc"
     source pyenv-fix.sh
 fi
 
-curl -L 'https://raw.githubusercontent.com/pyenv/pyenv-installer/master/bin/pyenv-installer' | bash
 command -v pyenv &>/dev/null && 'Success with pyenv' || die "Couldn't install pyenv"
 
 pyenv install --list | grep -E '^\s*[0-9]'
