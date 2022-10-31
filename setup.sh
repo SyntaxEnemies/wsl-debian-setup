@@ -43,10 +43,10 @@ printf 'Python version to install: '
 read py_version
 echo
 
-[[ -n "$py_version" ]] && (pyenv install "$py_version" && pyenv local "$py_version") || die 'No Python version selected, aborting ...'
+[[ -n "$py_version" ]] && (pyenv install "$py_version" && pyenv global "$py_version") || die 'No Python version selected, aborting ...'
 
 echo 'Installing python-pip ...'
-curl 'https://bootstrap.pypa.io/get-pip' | python
+python -m ensurepip --upgrade
 
 echo '(5/5) Cloning project ...'
 git clone https://github.com/SyntaxEnemies/power-corp
