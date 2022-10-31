@@ -37,7 +37,7 @@ if ! grep -q 'PYENV_ROOT' "$shellrc"; then
     source pyenv-fix.sh
 fi
 
-command -v pyenv &>/dev/null && 'Success with pyenv' || die "Couldn't install pyenv"
+command -v pyenv &>/dev/null && echo 'Success with pyenv' || die "Couldn't install pyenv"
 
 pyenv install --list | grep -E '^\s*[0-9]'
 printf 'Python version to install: '
